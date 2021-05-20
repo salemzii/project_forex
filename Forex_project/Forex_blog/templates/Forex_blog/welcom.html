@@ -1,0 +1,11 @@
+{% extends "Forex_blog\Base.html" %}
+
+{% block content %}
+    <h1>Welcome to our official blog page!</h1>
+    {% for connt in content %}
+        <fieldset>
+            <div><a href="{% url 'topic' connt.id %}">{{ connt.title }}</a> <small>{{ connt.Date }}</small></div>
+            <p>{{ connt.content }}</p>
+        </fieldset><br>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>  {{ post.id }} </title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+
+    <fieldset>
+         <div><h1>{{ post.title }}</h1> <small>{{ post.Date }}</small></div>
+        <div>
+            <p>{{ post.content }}</p>
+            {% if post.comments.all %}
+                {% for c in post.comments.all %}
+                    <small>
+                        <strong>...</strong> Comment by {{ c.name }} on {{ c.date }} <br>
+                            <strong><p style="margin-left: 40px">{{ c.content }}</p></strong><hr>
+                    </small>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            <a href="{% url 'comment' post.id %}">Comment</a>
+        </div>
+    </fieldset>
+
+</body>
+</html>
